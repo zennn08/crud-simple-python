@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Tambah Data{% endblock %}
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %} 
+  {% if messages %} 
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+        <div>{{ message }}</div>
+      </div>
+    {% endfor %} 
+  {% endif %}
+{% endwith %}
+<form action="/create" method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="name" class="form-label">Nama</label>
+    <input type="text" class="form-control" id="name" name="name" />
+  </div>
+  <div class="mb-3">
+    <label for="desc" class="form-label">Deskripsi</label>
+    <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Upload Foto</label>
+    <input class="form-control" type="file" id="image" name="image" />
+  </div>
+  <button type="submit" class="btn btn-mycolor">Submit</button>
+</form>
+{% endblock %}
